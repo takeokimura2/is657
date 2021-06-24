@@ -22,12 +22,15 @@ function SearchBar ({term, onTermChange, onTermSubmit}) {
 export default SearchBar
 
 const styles = StyleSheet.create({
-  marginTop: 10,
-  backgroundStyle: {backgroundColor: '#F0EEEE',
-  height: 50,
-  borderRadius: 5,
-  marginHorizontal: 15,
-  flexDirection: 'row',
+  
+  backgroundStyle: {
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: '#F0EEEE',
+    height: 50,
+    borderRadius: 5,
+    marginHorizontal: 15,
+    flexDirection: 'row',
   },
   inputStyle: {
     flex: 1,
