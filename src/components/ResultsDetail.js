@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Image } from 'react-native'
 
 
 function ResultsDetail ({result}) {
+
+
   return (
     <View style={styles.container}>
       <Image 

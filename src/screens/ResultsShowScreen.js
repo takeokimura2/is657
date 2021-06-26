@@ -8,11 +8,11 @@ function ResultsShowScreen ({route, navigation}) {
   const [result, setResult] = useState(null);
   const {id} = route.params
 
-  console.log(result);
+  //console.log(result);
 
   const getResult = async (id) => {
      const response = await yelp.get(`/${id}`);
-     console.log(response.data)
+     //console.log(response.data)
      setResult(response.data);
    };
 
@@ -25,9 +25,14 @@ function ResultsShowScreen ({route, navigation}) {
      return null;
    }
 
+   console.log(result)
+
   return (
     <View>
-      <Text>{result.name} {id}</Text>
+      <Text style={styles.titleStyle}>{result.name}</Text>
+      <Text style={styles.restaurantInfo}>{result.display_phone}</Text>
+      <Text style={styles.restaurantInfo}>{result.location.display_address}</Text>
+      <Text style={styles.restaurantInfo}>Price: {result.price} Rating: {result.rating}</Text>
       <FlatList 
         data={result.photos}
         keyExtractor={(photo) => photo}
@@ -42,8 +47,22 @@ function ResultsShowScreen ({route, navigation}) {
 export default ResultsShowScreen
 
 const styles = StyleSheet.create({
+  titleStyle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginLeft: 15,
+    marginTop: 5,
+    marginBottom: 5,
+  },
+  restaurantInfo:{
+    marginLeft: 15,
+    marginBottom: 5,
+  },
   image: {
     height: 200,
-    width: 300
+    width: 300,
+    marginLeft: 15,
+    marginBottom: 5,
+    borderRadius: 4,
   }
 })
