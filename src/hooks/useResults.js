@@ -11,11 +11,12 @@ export default  () => {
     { params: {
       limit:50,
       term: searchTerm,
-      location: 'san jose'
+      location: 'long beach'
     }});
+    console.log(response.data)
     setResults(response.data.businesses);
   } catch (err){ 
-  setErrorMessage('Something went wrong')
+  setErrorMessage(err)
   }} 
 
 useEffect(() => {
