@@ -22,6 +22,7 @@ export default function App() {
         <Stack.Screen
           name="ResultsShow"
           component={ResultsShowScreen}
+          options={{ title: "Search Result" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
