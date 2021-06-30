@@ -4,6 +4,8 @@ import { StyleSheet, Text, View, Image } from 'react-native'
 
 function ResultsDetail ({result}) {
 
+  //console.log(result);
+
 
   return (
     <View style={styles.container}>

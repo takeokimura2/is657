@@ -13,16 +13,18 @@ export default  () => {
       term: searchTerm,
       location: 'long beach'
     }});
-    console.log(response.data)
     setResults(response.data.businesses);
   } catch (err){ 
   setErrorMessage(err)
+  
   }} 
 
 useEffect(() => {
   searchApi('pasta');
 
 }, [])
+
+
 
 return [searchApi, results, errorMessage];
 

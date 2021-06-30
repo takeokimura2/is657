@@ -8,6 +8,8 @@ function ResultsList ({title, results, navigation}) {
   if(!results.length){
     return null;
   }
+
+  //console.log(results)
   
   return (
     <View style = {styles.container}>
@@ -18,7 +20,7 @@ function ResultsList ({title, results, navigation}) {
         data={results}
         keyExtractor = {(result) => result.id}
         renderItem = {({item}) => {
-          //console.log(item);
+          
           return (
             <TouchableOpacity onPress ={() => navigation.navigate('ResultsShow', {id: item.id})}>
               <ResultsDetail result={item} />
