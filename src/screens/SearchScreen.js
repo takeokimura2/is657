@@ -4,14 +4,14 @@ import SearchBar from '../components/SearchBar';
 import useResults from '../hooks/useResults';
 import ResultsList from '../components/ResultsList';
 import yelp from '../api/yelp';
-import LocationSearchBar from '../components/LocationSearchBar';
+//import LocationSearchBar from '../components/LocationSearchBar';
 
 function SearchScreen ({navigation}) {
 
   const [term, setTerm] = useState('');
   const [searchApi, results, errorMessage] = useResults()
 
-  console.log(results)
+  //console.log(results)
 
   function filterResultsByPrice (price) {
     // price ==='$' || '$$' || '$$$'
@@ -20,9 +20,10 @@ function SearchScreen ({navigation}) {
     })
   };
 
+
   return (
     <>
-      <LocationSearchBar />
+     
       <SearchBar 
         term = {term} 
         onTermChange = {newTerm => setTerm(newTerm)}
@@ -30,7 +31,7 @@ function SearchScreen ({navigation}) {
       />
       
 
-      {errorMessage ? <Text>{errorMessage}</Text> : null}
+      {errorMessage ? <Text>{errorMessage.message}</Text> : null}
       
       <ScrollView>
         <ResultsList 
