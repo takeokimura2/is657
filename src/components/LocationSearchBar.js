@@ -1,12 +1,18 @@
 import React from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
+import { Feather } from '@expo/vector-icons'
 
-function LocationSearchBar () {
+function LocationSearchBar ({location, onLocationChange}) {
   return (
-    <View style={styles.backgroundColor}>
-      <TextInput 
+    <View style={styles.backgroundStyle}>
+      <Feather name="search" style={styles.iconStyle}/>
+      <TextInput
+        autoCapitalize="none"
+        autoCorrect={false} 
         style = {styles.inputStyle}
-        placeholder = "Los Angeles"
+        placeholder = "Location"
+        value = {location}
+        onChangeText={newLocation => onLocationChange(newLocation)}
        />
     </View>
   )
@@ -29,4 +35,9 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 18,
   },
+  iconStyle: {
+    fontSize: 35,
+    alignSelf: 'center',
+    marginHorizontal: 15
+  }
 })

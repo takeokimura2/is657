@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, ScrollView, Button } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import useResults from '../hooks/useResults';
 import ResultsList from '../components/ResultsList';
-import yelp from '../api/yelp';
-//import LocationSearchBar from '../components/LocationSearchBar';
+import LocationSearchBar from '../components/LocationSearchBar';
 
 function SearchScreen ({navigation}) {
 
   const [term, setTerm] = useState('');
   const [searchApi, results, errorMessage] = useResults()
+  const [location, setLocation] = useState('Long Beach')
 
   //console.log(results)
 
@@ -20,16 +20,29 @@ function SearchScreen ({navigation}) {
     })
   };
 
+  useEffect(()=>{
+    setLocation('Long Beach');
+    searchApi(term, location);
+  }, []);
 
   return (
     <>
-     
+      <LocationSearchBar 
+        location = {location} 
+        onLocationChange = {newLocation => setLocation(newLocation)}
+      
+      />
       <SearchBar 
         term = {term} 
         onTermChange = {newTerm => setTerm(newTerm)}
-        onTermSubmit ={()=> searchApi(term)}
-      />
       
+      />
+      <Button
+        onPress = {()=> searchApi(term, location)}
+        color="blue"
+        title = "Search"
+        style = {styles.buttonStyle}
+      />
 
       {errorMessage ? <Text>{errorMessage.message}</Text> : null}
       
@@ -56,4 +69,10 @@ function SearchScreen ({navigation}) {
 
 export default SearchScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  buttonStyle:{
+    borderWidth: 1,
+    backgroundColor: 'blue',
+    fontWeight: 'bold'
+  }
+})

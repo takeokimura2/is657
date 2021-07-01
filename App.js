@@ -17,7 +17,7 @@ export default function App() {
         <Stack.Screen
           name="Search"
           component={SearchScreen}
-          options={{ title: "Business Search" }}
+          options={{ title: "Restaurant Search" }}
         />
         <Stack.Screen
           name="ResultsShow"
